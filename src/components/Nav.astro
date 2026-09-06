@@ -216,107 +216,118 @@ const navLinks = [
 </header>
 
 <script>
-  const header = document.querySelector<HTMLElement>("[data-nav-header]");
-  const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
-  const toggle =
-    document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
-  const openIcon = document.querySelector<SVGElement>("[data-menu-open-icon]");
-  const closeIcon = document.querySelector<SVGElement>(
-    "[data-menu-close-icon]",
-  );
-  const scrollTargets =
-    document.querySelectorAll<HTMLElement>("[data-nav-link]");
-  const logo = document.querySelector<HTMLElement>("[data-nav-logo]");
-  const title = document.querySelector<HTMLElement>("[data-nav-title]");
-  const subtitle = document.querySelector<HTMLElement>("[data-nav-subtitle]");
-  const desktopLinks = document.querySelectorAll<HTMLElement>(
-    "[data-nav-desktop-link]",
-  );
-  const themeToggles = document.querySelectorAll<HTMLButtonElement>(
-    "[data-theme-toggle]",
-  );
-  const sunIcons = document.querySelectorAll<SVGElement>("[data-sun-icon]");
-  const moonIcons = document.querySelectorAll<SVGElement>("[data-moon-icon]");
-
   const applyTheme = (dark: boolean) => {
     document.documentElement.classList.toggle("dark", dark);
     localStorage.setItem("viche-theme", dark ? "dark" : "light");
-    themeToggles.forEach((button) => {
-      button.setAttribute("aria-pressed", String(dark));
-      button.setAttribute(
-        "aria-label",
-        dark ? "Activar modo claro" : "Activar modo oscuro",
-      );
-    });
-    sunIcons.forEach((icon) => icon.classList.toggle("hidden", !dark));
-    moonIcons.forEach((icon) => icon.classList.toggle("hidden", dark));
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-theme-toggle]")
+      .forEach((button) => {
+        button.setAttribute("aria-pressed", String(dark));
+        button.setAttribute(
+          "aria-label",
+          dark ? "Activar modo claro" : "Activar modo oscuro",
+        );
+      });
+    document
+      .querySelectorAll<SVGElement>("[data-sun-icon]")
+      .forEach((icon) => icon.classList.toggle("hidden", !dark));
+    document
+      .querySelectorAll<SVGElement>("[data-moon-icon]")
+      .forEach((icon) => icon.classList.toggle("hidden", dark));
   };
 
   const savedTheme = localStorage.getItem("viche-theme");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   applyTheme(savedTheme ? savedTheme === "dark" : prefersDark);
 
-  themeToggles.forEach((button) => {
-    button.addEventListener("click", () => {
-      applyTheme(!document.documentElement.classList.contains("dark"));
-    });
-  });
-
   const setScrolled = () => {
+    const header = document.querySelector<HTMLElement>("[data-nav-header]");
     const scrolled = window.scrollY > 20;
     header?.toggleAttribute("data-scrolled", scrolled);
     header?.classList.toggle("bg-white/95", scrolled);
     header?.classList.toggle("backdrop-blur-md", scrolled);
     header?.classList.toggle("shadow-[0_2px_20px_rgba(0,0,0,0.08)]", scrolled);
-    title?.classList.toggle("text-ink-800", scrolled);
-    title?.classList.toggle("text-white", !scrolled);
-    subtitle?.classList.toggle("text-primary-600", scrolled);
-    subtitle?.classList.toggle("text-white/70", !scrolled);
-    desktopLinks.forEach((link) => {
-      link.classList.toggle("text-ink-600", scrolled);
-      link.classList.toggle("text-white/85", !scrolled);
-    });
-    toggle?.classList.toggle("text-ink-700", scrolled);
-    toggle?.classList.toggle("text-white", !scrolled);
-    themeToggles.forEach((button) => {
-      button.classList.toggle("border-ink-100", scrolled);
-      button.classList.toggle("bg-ink-50", scrolled);
-      button.classList.toggle("text-ink-700", scrolled);
-      button.classList.toggle("border-white/20", !scrolled);
-      button.classList.toggle("bg-white/10", !scrolled);
-      button.classList.toggle("text-white", !scrolled);
-    });
+    document
+      .querySelectorAll<HTMLElement>("[data-nav-desktop-link]")
+      .forEach((link) => {
+        link.classList.toggle("text-ink-600", scrolled);
+        link.classList.toggle("text-white/85", !scrolled);
+      });
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-menu-toggle]")
+      .forEach((button) => {
+        button.classList.toggle("text-ink-700", scrolled);
+        button.classList.toggle("text-white", !scrolled);
+      });
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-theme-toggle]")
+      .forEach((button) => {
+        button.classList.toggle("border-ink-100", scrolled);
+        button.classList.toggle("bg-ink-50", scrolled);
+        button.classList.toggle("text-ink-700", scrolled);
+        button.classList.toggle("border-white/20", !scrolled);
+        button.classList.toggle("bg-white/10", !scrolled);
+        button.classList.toggle("text-white", !scrolled);
+      });
   };
 
   const closeMenu = () => {
+    const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+    const toggle =
+      document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
     menu?.classList.replace("max-h-96", "max-h-0");
     menu?.classList.replace("opacity-100", "opacity-0");
     toggle?.setAttribute("aria-expanded", "false");
-    openIcon?.classList.remove("hidden");
-    closeIcon?.classList.add("hidden");
+    document
+      .querySelector<SVGElement>("[data-menu-open-icon]")
+      ?.classList.remove("hidden");
+    document
+      .querySelector<SVGElement>("[data-menu-close-icon]")
+      ?.classList.add("hidden");
   };
 
-  toggle?.addEventListener("click", () => {
-    const isOpen = toggle.getAttribute("aria-expanded") === "true";
-    if (isOpen) closeMenu();
-    else {
-      menu?.classList.replace("max-h-0", "max-h-96");
-      menu?.classList.replace("opacity-0", "opacity-100");
-      toggle.setAttribute("aria-expanded", "true");
-      openIcon?.classList.add("hidden");
-      closeIcon?.classList.remove("hidden");
-    }
-  });
+  document.addEventListener("click", (event) => {
+    const target = event.target as Element;
+    const themeToggle = target.closest<HTMLButtonElement>(
+      "[data-theme-toggle]",
+    );
+    const menuToggle = target.closest<HTMLButtonElement>("[data-menu-toggle]");
+    const navLink = target.closest<HTMLAnchorElement>("[data-nav-link]");
 
-  scrollTargets.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const href = link.getAttribute("href");
-      const target = href ? document.querySelector(href) : null;
-      if (!target) return;
+    if (themeToggle) {
+      applyTheme(!document.documentElement.classList.contains("dark"));
+      return;
+    }
+
+    if (menuToggle) {
+      const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        closeMenu();
+      } else {
+        menu?.classList.replace("max-h-0", "max-h-96");
+        menu?.classList.replace("opacity-0", "opacity-100");
+        menuToggle.setAttribute("aria-expanded", "true");
+        document
+          .querySelector<SVGElement>("[data-menu-open-icon]")
+          ?.classList.add("hidden");
+        document
+          .querySelector<SVGElement>("[data-menu-close-icon]")
+          ?.classList.remove("hidden");
+      }
+      return;
+    }
+
+    if (navLink) {
+      const href = navLink.getAttribute("href");
+      const targetSection = href?.startsWith("#")
+        ? document.querySelector(href)
+        : null;
+      if (!targetSection) return;
       event.preventDefault();
       closeMenu();
-      target.scrollIntoView({ behavior: "smooth" });
-    });
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
   });
 
   setScrolled();

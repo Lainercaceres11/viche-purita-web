@@ -50,7 +50,52 @@ import { ClientRouter } from "astro:transitions";
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
 
-    <title>Astro Basics</title>
+    <script>
+      const initializeReveal = () => {
+        const revealElements =
+          document.querySelectorAll<HTMLElement>(".reveal");
+
+        if (!revealElements.length) return;
+
+        if (!("IntersectionObserver" in window)) {
+          revealElements.forEach((element) =>
+            element.classList.add("is-visible"),
+          );
+          return;
+        }
+
+        revealElements.forEach((element) =>
+          element.classList.add("reveal-pending"),
+        );
+
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+
+              entry.target.classList.add("is-visible");
+              entry.target.classList.remove("reveal-pending");
+              observer.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.05 },
+        );
+
+        revealElements.forEach((element) => revealObserver.observe(element));
+
+        window.setTimeout(() => {
+          revealElements.forEach((element) => {
+            element.classList.add("is-visible");
+            element.classList.remove("reveal-pending");
+          });
+          revealObserver.disconnect();
+        }, 2000);
+      };
+
+      document.addEventListener("astro:page-load", initializeReveal);
+    </script>
+
+    <title>Viche Purita</title>
   </head>
   <body>
     <slot />

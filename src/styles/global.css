@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap');
+
+:root {
+    --page-background: #FFFFFF;
+    --raised-background: #FFFFFF;
+    --soft-background: #F8FAFC;
+    --body-text: #1E293B;
+}
+
+html.dark {
+    color-scheme: dark;
+    --page-background: #0B1220;
+    --raised-background: #151F32;
+    --soft-background: #101A2A;
+    --body-text: #F1F5F9;
+}
+
+@theme {
+    --font-display: 'Montserrat', system-ui, sans-serif;
+    --container-container: 1200px;
+
+    --color-primary-50: #FFF8ED;
+    --color-primary-100: #FFEDD1;
+    --color-primary-200: #F5D39D;
+    --color-primary-300: #EBC078;
+    --color-primary-400: #DDBA80;
+    --color-primary-500: #CC9A4E;
+    --color-primary-600: #B07F33;
+    --color-primary-700: #956522;
+    --color-primary-900: #5C3B12;
+
+    --color-ink-50: #F8FAFC;
+    --color-ink-100: #F1F5F9;
+    --color-ink-300: #CBD5E1;
+    --color-ink-500: #64748B;
+    --color-ink-600: #475569;
+    --color-ink-700: #334155;
+    --color-ink-800: #1E293B;
+
+    --color-accent-200: #F5D39D;
+    --color-accent-300: #EBC078;
+    --color-accent-500: #8A5A14;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--body-text);
+    background-color: var(--page-background);
+}
+
+/* Accessible accent colors for labels and section headings. */
+.text-primary-600 {
+    color: #70470F;
+}
+
+.text-primary-700 {
+    color: #70470F;
+}
+
+html.dark {
+    .bg-white {
+        background-color: var(--raised-background);
+    }
+
+    .bg-ink-50 {
+        background-color: var(--soft-background);
+    }
+
+    .text-ink-800 {
+        color: #F8FAFC;
+    }
+
+    .text-ink-700 {
+        color: #E2E8F0;
+    }
+
+    .text-ink-600 {
+        color: #D7E0EA;
+    }
+
+    .text-ink-500 {
+        color: #C0CBD8;
+    }
+
+    .text-ink-400 {
+        color: #AAB8C8;
+    }
+
+    .border-ink-100 {
+        border-color: rgba(203, 213, 225, 0.22);
+    }
+
+    .bg-primary-50 {
+        background-color: rgba(218, 165, 75, 0.18);
+    }
+
+    .text-primary-600 {
+        color: #F2C66D;
+    }
+
+    .text-primary-700 {
+        color: #FFD98A;
+    }
+
+    .bg-primary-600 {
+        background-color: #95631E;
+    }
+
+    .bg-accent-500 {
+        background-color: #A56E1B;
+    }
+
+    .hover\:bg-primary-700:hover {
+        background-color: #B47B28;
+    }
+
+    .bg-ink-800 {
+        background-color: #24344D;
+    }
+
+    .hover\:bg-ink-900:hover {
+        background-color: #304563;
+    }
+
+    [data-volume] {
+        background-color: #F1F5F9;
+        border-color: rgba(255, 255, 255, 0.85);
+        color: #0F172A;
+    }
+
+    [data-nav-header][data-scrolled] {
+        background-color: rgba(15, 23, 42, 0.94);
+    }
+
+    [data-mobile-menu]>div {
+        background-color: rgba(15, 23, 42, 0.98);
+        border-color: rgba(203, 213, 225, 0.22);
+    }
+
+}
+
+[data-nav-desktop-link] {
+    transition: color 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+}
+
+[data-nav-desktop-link]:hover {
+    background-color: rgba(242, 198, 109, 0.2);
+    box-shadow: inset 0 0 0 1px rgba(242, 198, 109, 0.28);
+    color: #FFFFFF;
+}
+
+[data-nav-header][data-scrolled] [data-nav-desktop-link]:hover {
+    background-color: #FFF8ED;
+    box-shadow: inset 0 0 0 1px rgba(176, 127, 51, 0.18);
+    color: #956522;
+}
+
+html.dark [data-nav-desktop-link]:hover,
+html.dark [data-nav-header][data-scrolled] [data-nav-desktop-link]:hover {
+    background-color: rgba(242, 198, 109, 0.16);
+    box-shadow: inset 0 0 0 1px rgba(242, 198, 109, 0.34);
+    color: #FFD98A;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', system-ui, sans-serif;
+}
+
+/* Custom focus styles — soft amber outline */
+*:focus-visible {
+    outline: 2px solid #CC9A4E;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid #CC9A4E;
+    outline-offset: 0;
+}
+
+/* Reveal-on-scroll animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero gradient overlay */
+.hero-overlay {
+    background:
+        linear-gradient(90deg, rgba(2, 6, 23, 0.82) 0%, rgba(2, 6, 23, 0.58) 58%, rgba(2, 6, 23, 0.68) 100%),
+        linear-gradient(180deg, rgba(2, 6, 23, 0.84) 0%, rgba(2, 6, 23, 0.64) 42%, rgba(2, 6, 23, 0.92) 100%);
+}
+
+/* Solid title colors keep the hero heading measurable and readable. */
+.hero-heading {
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.95), 0 0 14px rgba(0, 0, 0, 0.72);
+}
+
+.hero-accent {
+    color: #a3c458;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.95), 0 0 12px rgba(0, 0, 0, 0.72);
+}
+
+/* Product card image zoom */
+.product-img {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .product-img {
+    transform: scale(1.08);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #CC9A4E;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #B07F33;
+}
+
+html.dark .text-white\/70 {
+    color: #D7E0EA;
+}
+
+html.dark .hero-media {
+    filter: brightness(0.9) saturate(0.94) contrast(1.04);
+}
+
+html.dark .hero-overlay {
+    background:
+        linear-gradient(90deg, rgba(2, 10, 24, 0.72) 0%, rgba(4, 18, 35, 0.42) 58%, rgba(2, 10, 24, 0.58) 100%),
+        linear-gradient(180deg, rgba(2, 10, 24, 0.74) 0%, rgba(3, 16, 31, 0.5) 44%, rgba(1, 7, 18, 0.86) 100%);
+}
+
+html.dark .hero-accent {
+    color: #F6C96F;
+}
+
+html.dark .hero-heading {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.98), 0 0 18px rgba(0, 0, 0, 0.8);
+}

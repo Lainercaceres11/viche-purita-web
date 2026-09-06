@@ -1,0 +1,119 @@
+---
+const socialLinks = [
+  { icon: "instagram", label: "Instagram", href: "#" },
+  { icon: "facebook", label: "Facebook", href: "#" },
+];
+
+const companyLinks = [
+  { label: "Inicio", href: "#hero" },
+  { label: "Quiénes Somos", href: "#quienes-somos" },
+  { label: "Productos", href: "#productos" },
+  { label: "Contacto", href: "#contacto" },
+];
+---
+
+<footer class="bg-black/90 text-white">
+  <div class="max-w-container mx-auto px-5 sm:px-8 py-14 sm:py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+      <div class="sm:col-span-2 lg:col-span-1">
+        <div class="flex items-center gap-2.5 mb-4">
+        
+          
+          <span class="flex flex-col leading-none">
+            <span class="font-display font-extrabold text-lg">Viche Purita</span
+            >
+            <span
+              class="text-[10px] tracking-[0.22em] uppercase mt-0.5 text-white/50"
+            >
+              Bebidas Ancestrales
+            </span>
+          </span>
+        </div>
+        <p class="text-white/60 text-sm leading-relaxed max-w-xs mb-6">
+          Bebidas artesanales que preservan los saberes y sabores del Pacífico
+          colombiano. Tradición en cada botella.
+        </p>
+
+        <div class="flex items-center gap-3">
+          {
+            socialLinks.map((social) => {
+              return (
+                <a
+                  href={social.href}
+                  aria-label={social.label}
+                  class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 hover:bg-primary-600 text-white/70 hover:text-white transition-all duration-300 hover:scale-110 active:scale-95"
+                >
+                  {social.icon === "instagram" ? (
+                    <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                      <rect x="3" y="3" width="18" height="18" rx="5" />
+                      <circle cx="12" cy="12" r="4" />
+                      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                    </svg>
+                  ) : (
+                    <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v3H6v4h3v8h4v-8h3.5l.5-4H13V9c0-.66.34-1 1-1Z" />
+                    </svg>
+                  )}
+                </a>
+              );
+            })
+          }
+        </div>
+      </div>
+
+      <div>
+        <h4
+          class="font-display font-bold text-sm uppercase tracking-wider text-white/90 mb-4"
+        >
+          Navegación
+        </h4>
+        <ul class="flex flex-col gap-2.5">
+          {
+            companyLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-white/60 hover:text-primary-300 text-sm transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h4
+          class="font-display font-bold text-sm uppercase tracking-wider text-white/90 mb-4"
+        >
+          Compromiso
+        </h4>
+        <p class="text-white/60 text-sm leading-relaxed mb-4">
+          El exceso de alcohol es perjudicial para la salud. Consume con
+          moderación. Prohibida la venta a menores de edad.
+        </p>
+        <div
+          class="inline-flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg"
+        >
+          <span class="w-2 h-2 rounded-full bg-success-400 animate-pulse"
+          ></span>
+          <span class="text-white/70 text-xs">Producto 100% colombiano</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div
+      class="max-w-container mx-auto px-5 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+    >
+      <p class="text-white/40 text-xs text-center sm:text-left">
+        © {new Date().getFullYear()} Viche Purita. Todos los derechos reservados.
+      </p>
+      <p class="text-white/40 text-xs">
+        Diseñado con tradición en el Pacífico, Colombia.
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,23 +1,67 @@
+---
+import "../styles/global.css";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const image = "/logo.png";
+import { ClientRouter } from "astro:transitions";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- meta tags -->
+
+    <meta name="title" content="Viche Purita" />
+    <meta
+      name="description"
+      content="Productos 100% ancestrales a base de viche."
+    />
+
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content="Viche Purita" />
+    <meta
+      property="og:description"
+      content="Productos 100% ancestrales a base de viche."
+    />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content="Viche Purita" />
+    <meta
+      property="twitter:description"
+      content="Productos 100% ancestrales a base de viche."
+    />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+    <meta name="generator" content={Astro.generator} />
+    <ClientRouter />
+
+    <title>Astro Basics</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>

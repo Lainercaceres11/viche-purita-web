@@ -1,0 +1,324 @@
+---
+const navLinks = [
+  { label: "Inicio", href: "" },
+  { label: "Quiénes Somos", href: "#about" },
+  { label: "Productos", href: "#products" },
+  { label: "Contacto", href: "#contact" },
+];
+---
+
+<header
+  data-nav-header
+  class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500"
+>
+  <nav
+    class="max-w-container mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between"
+  >
+    <a
+      href="#hero"
+      data-nav-link
+      class="flex items-center group"
+      aria-label="Viche Purita inicio"
+    >
+      <span
+        data-nav-logo
+        class="flex items-center justify-center w-32 h-12 sm:w-40 sm:h-14 overflow-hidden transition-all duration-300 group-hover:scale-[1.03]"
+      >
+        <img
+          src="/logo.png"
+          alt="Viche Purita"
+          class="h-full w-full object-contain scale-[1.9]"
+        />
+      </span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-1">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              data-nav-link
+              data-nav-desktop-link
+              class="px-4 py-2 text-sm font-medium rounded-lg text-white/85"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <button
+        type="button"
+        data-theme-toggle
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20 focus-visible:outline-white"
+        aria-label="Activar modo oscuro"
+        aria-pressed="false"
+      >
+        <svg
+          data-sun-icon
+          class="hidden h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+          ></path>
+        </svg>
+        <svg
+          data-moon-icon
+          class="h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+        </svg>
+      </button>
+
+      <a
+        aria-label="Contactar por WhatsApp"
+        href="https://wa.me/573225682387"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="#productos"
+        data-nav-link
+        class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-primary-700 hover:bg-primary-900 text-white text-sm font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.03] active:scale-95"
+      >
+        <svg
+          class="w-4 h-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"
+          ></path><path d="M3 6h18M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        Comprar
+      </a>
+
+      <button
+        type="button"
+        data-menu-toggle
+        class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg transition-colors text-white hover:bg-white/10"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+      >
+        <svg
+          data-menu-open-icon
+          class="w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg
+        >
+        <svg
+          data-menu-close-icon
+          class="hidden w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"></path></svg
+        >
+      </button>
+    </div>
+  </nav>
+
+  <div
+    data-mobile-menu
+    class="md:hidden overflow-hidden transition-all duration-400 ease-out max-h-0 opacity-0"
+  >
+    <div class="bg-white/98 backdrop-blur-md border-t border-ink-100 px-5 py-4">
+      <ul class="flex flex-col gap-1">
+        <li
+          class="mb-2 flex items-center justify-between border-b border-ink-100 px-4 pb-3"
+        >
+          <span class="text-sm font-medium text-ink-600">Apariencia</span>
+          <button
+            type="button"
+            data-theme-toggle
+            class="flex h-10 w-10 items-center justify-center rounded-full border border-ink-100 bg-ink-50 text-ink-700 transition-all duration-300 hover:border-primary-300 hover:text-primary-700"
+            aria-label="Activar modo oscuro"
+            aria-pressed="false"
+          >
+            <svg
+              data-sun-icon
+              class="hidden h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+              ><circle cx="12" cy="12" r="4"></circle><path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              ></path></svg
+            >
+            <svg
+              data-moon-icon
+              class="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+              ><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"
+              ></path></svg
+            >
+          </button>
+        </li>
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                data-nav-link
+                class="block px-4 py-3 text-ink-700 font-medium rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="mt-2">
+          <a
+            href="#productos"
+            data-nav-link
+            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-primary-600 text-white font-semibold rounded-lg shadow-sm"
+          >
+            <svg
+              class="w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+              ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"
+              ></path><path d="M3 6h18M16 10a4 4 0 0 1-8 0"></path></svg
+            >
+            Comprar ahora
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>("[data-nav-header]");
+  const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+  const toggle =
+    document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const openIcon = document.querySelector<SVGElement>("[data-menu-open-icon]");
+  const closeIcon = document.querySelector<SVGElement>(
+    "[data-menu-close-icon]",
+  );
+  const scrollTargets =
+    document.querySelectorAll<HTMLElement>("[data-nav-link]");
+  const logo = document.querySelector<HTMLElement>("[data-nav-logo]");
+  const title = document.querySelector<HTMLElement>("[data-nav-title]");
+  const subtitle = document.querySelector<HTMLElement>("[data-nav-subtitle]");
+  const desktopLinks = document.querySelectorAll<HTMLElement>(
+    "[data-nav-desktop-link]",
+  );
+  const themeToggles = document.querySelectorAll<HTMLButtonElement>(
+    "[data-theme-toggle]",
+  );
+  const sunIcons = document.querySelectorAll<SVGElement>("[data-sun-icon]");
+  const moonIcons = document.querySelectorAll<SVGElement>("[data-moon-icon]");
+
+  const applyTheme = (dark: boolean) => {
+    document.documentElement.classList.toggle("dark", dark);
+    localStorage.setItem("viche-theme", dark ? "dark" : "light");
+    themeToggles.forEach((button) => {
+      button.setAttribute("aria-pressed", String(dark));
+      button.setAttribute(
+        "aria-label",
+        dark ? "Activar modo claro" : "Activar modo oscuro",
+      );
+    });
+    sunIcons.forEach((icon) => icon.classList.toggle("hidden", !dark));
+    moonIcons.forEach((icon) => icon.classList.toggle("hidden", dark));
+  };
+
+  const savedTheme = localStorage.getItem("viche-theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(savedTheme ? savedTheme === "dark" : prefersDark);
+
+  themeToggles.forEach((button) => {
+    button.addEventListener("click", () => {
+      applyTheme(!document.documentElement.classList.contains("dark"));
+    });
+  });
+
+  const setScrolled = () => {
+    const scrolled = window.scrollY > 20;
+    header?.toggleAttribute("data-scrolled", scrolled);
+    header?.classList.toggle("bg-white/95", scrolled);
+    header?.classList.toggle("backdrop-blur-md", scrolled);
+    header?.classList.toggle("shadow-[0_2px_20px_rgba(0,0,0,0.08)]", scrolled);
+    title?.classList.toggle("text-ink-800", scrolled);
+    title?.classList.toggle("text-white", !scrolled);
+    subtitle?.classList.toggle("text-primary-600", scrolled);
+    subtitle?.classList.toggle("text-white/70", !scrolled);
+    desktopLinks.forEach((link) => {
+      link.classList.toggle("text-ink-600", scrolled);
+      link.classList.toggle("text-white/85", !scrolled);
+    });
+    toggle?.classList.toggle("text-ink-700", scrolled);
+    toggle?.classList.toggle("text-white", !scrolled);
+    themeToggles.forEach((button) => {
+      button.classList.toggle("border-ink-100", scrolled);
+      button.classList.toggle("bg-ink-50", scrolled);
+      button.classList.toggle("text-ink-700", scrolled);
+      button.classList.toggle("border-white/20", !scrolled);
+      button.classList.toggle("bg-white/10", !scrolled);
+      button.classList.toggle("text-white", !scrolled);
+    });
+  };
+
+  const closeMenu = () => {
+    menu?.classList.replace("max-h-96", "max-h-0");
+    menu?.classList.replace("opacity-100", "opacity-0");
+    toggle?.setAttribute("aria-expanded", "false");
+    openIcon?.classList.remove("hidden");
+    closeIcon?.classList.add("hidden");
+  };
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    if (isOpen) closeMenu();
+    else {
+      menu?.classList.replace("max-h-0", "max-h-96");
+      menu?.classList.replace("opacity-0", "opacity-100");
+      toggle.setAttribute("aria-expanded", "true");
+      openIcon?.classList.add("hidden");
+      closeIcon?.classList.remove("hidden");
+    }
+  });
+
+  scrollTargets.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
+      const target = href ? document.querySelector(href) : null;
+      if (!target) return;
+      event.preventDefault();
+      closeMenu();
+      target.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  setScrolled();
+  window.addEventListener("scroll", setScrolled, { passive: true });
+</script>

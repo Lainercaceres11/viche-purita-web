@@ -11,7 +11,8 @@ export async function GET(context) {
     items: [
       {
         title: "Viche Purita",
-        description: "Productos 100% ancestrales a base de viche",
+        description:
+          "Bebidas artesanales elaboradas con saberes transmitidos por generaciones. Cada botella contiene la historia, la tierra y el espíritu de nuestras raíces.",
       },
     ],
   });

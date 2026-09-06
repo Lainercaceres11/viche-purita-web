@@ -20,7 +20,7 @@ export interface Product {
 export const products: Product[] = [
   {
     id: "curado",
-    name: "Curado",
+    name: "Curao",
     tagline: "Frutas, hierbas y especias",
     description:
       "Una deliciosa fusión de viche artesanal con frutas, hierbas y especias naturales del Pacífico colombiano. Su sabor aromático y equilibrado lo convierte en una experiencia única que celebra la tradición y la riqueza cultural de nuestra tierra.",

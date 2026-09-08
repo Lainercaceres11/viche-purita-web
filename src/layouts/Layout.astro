@@ -23,8 +23,30 @@ import { ClientRouter } from "astro:transitions";
       name="description"
       content="Bebidas artesanales elaboradas con saberes transmitidos por generaciones. Cada botella contiene la historia, la tierra y el espíritu de nuestras raíces."
     />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <link rel="canonical" href={canonicalURL} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Viche Purita",
+        url: Astro.site,
+        logo: new URL("/logo.png", Astro.site).toString(),
+        description:
+          "Bebidas artesanales elaboradas con saberes transmitidos por generaciones.",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Quibdó",
+          addressRegion: "Chocó",
+          addressCountry: "CO",
+        },
+        email: "adelinasalaspotes@gmail.com",
+        telephone: "+57 322 568 2387",
+      })}
+    />
 
     <!-- Open Graph / Facebook -->
 

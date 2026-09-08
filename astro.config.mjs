@@ -10,7 +10,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: "https://viche-purita.netlify.app/",
+  site: "https://www.vichepurita.com/",
 
   integrations: [sitemap()],
 });
